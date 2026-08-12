@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Output images (generated at runtime, not example data)
+orszang_tang_vortex/frame.png
+orszang_tang_vortex/outputs/history_plots.png
+orszang_tang_vortex/outputs/test_history_plot.png
+orszang_tang_vortex/outputs/test_history_plot_light.png
