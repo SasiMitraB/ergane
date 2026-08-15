@@ -39,6 +39,7 @@ from .simulation_data import SimulationData
 _DEFAULT_CMAPS: dict[str, str] = {
     "density":     "inferno",
     "pressure":    "inferno",
+    "eint":        "inferno",
     "temperature": "inferno",
     "velx":        "seismic",
     "vely":        "seismic",
@@ -53,6 +54,7 @@ _DEFAULT_CMAPS: dict[str, str] = {
 _TITLES: dict[str, str] = {
     "density":     "log10(Density)",
     "pressure":    "log10(Pressure)",
+    "eint":        "log10(Internal Energy)",
     "temperature": "log10(Temperature)",
     "velx":        "$v_x$ (km/s)",
     "vely":        "$v_y$ (km/s)",
@@ -78,12 +80,12 @@ def _prepare_field_data(
     *,
     log_scale: bool = True,
 ) -> np.ndarray:
-    """Apply log10 to density, pressure, and temperature fields when log_scale is True."""
+    """Apply log10 to density, pressure, eint, and temperature fields when log_scale is True."""
     if log_scale:
         if field_name == "density":
             floor = 1e-10 * sim.units.density
             return np.log10(np.maximum(data, floor))
-        elif field_name == "pressure":
+        elif field_name in ("pressure", "eint"):
             floor = 1e-10 * sim.units.pressure
             return np.log10(np.maximum(data, floor))
         elif field_name == "temperature":
